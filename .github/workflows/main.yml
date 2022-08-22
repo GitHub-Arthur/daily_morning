@@ -1,7 +1,7 @@
 name: morning
 on:
   schedule:
-  - cron:  '52 16 * * *'
+  - cron:  '58 16 * * *'
   workflow_dispatch:
 
 jobs:
