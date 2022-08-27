@@ -94,8 +94,8 @@ data = {
         "words":{"value":get_words(), "color":get_random_color()},  # 彩虹屁
         "words_pyq": {"value": get_words_pyq(), "color": get_random_color()}  # 朋友圈文案
 }
-# res = wm.send_template(user_id, template_id, data)
-res = wm.send_template(user_id_cjy, template_id, data)
+res = wm.send_template(user_id, template_id, data)
+# res = wm.send_template(user_id_cjy, template_id, data)
 print(res)
 
 wm = WeChatMessage(client)
@@ -114,7 +114,7 @@ data = {
         "words":{"value":get_words(), "color":get_random_color()},  # 彩虹屁
         "words_pyq": {"value": get_words_pyq(), "color": get_random_color()}  # 朋友圈文案
 }
-# res = wm.send_template(user_id_cjy, template_id_cjy, data)
+res = wm.send_template(user_id_cjy, template_id_cjy, data)
 print(res)
 
 ###

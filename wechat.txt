@@ -1,0 +1,26 @@
+今日天气: {{weather.DATA}}
+所在地: {{load.DATA}}
+当前温度: {{temperature.DATA}}
+最低气温: {{low.DATA}}
+最高气温: {{high.DATA}}
+空气湿度: {{humidity.DATA}}
+空气质量: {{airQuality.DATA}}
+风力: {{wind.DATA}}
+今天是我们在一起的第{{love_days.DATA}} 天
+距离宝宝的生日还有{{birthday_left.DATA]}}天
+每日夸夸: {{words.DATA}}
+朋友圈文案: {{words_pyq.DATA}}
+
+
+今日天气: {{weather.DATA}}
+所在地: {{load.DATA}}
+当前温度: {{temperature.DATA}}
+最低气温: {{low.DATA}}
+最高气温: {{high.DATA}}
+空气湿度: {{humidity.DATA}}
+空气质量: {{airQuality.DATA}}
+风力: {{wind.DATA}}
+今天是我们在一起的第{{love_days.DATA}} 天
+距离宝宝的生日还有{{birthday_left.DATA]}}天
+每日夸夸: {{words.DATA}}
+朋友圈文案: {{words_pyq.DATA}}
