@@ -63,7 +63,7 @@ def get_words_pyq():
   words = requests.get("https://api.shadiao.pro/pyq")
   if words.status_code != 200:
     return get_words_pyq()
-  return words.json()['data']['text'
+  return words.json()['data']['text']
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
