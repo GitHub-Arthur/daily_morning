@@ -79,10 +79,24 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
-wea, temperature, low, high, humidity, wind, airQuality, load = get_weather_cjy()
-data = {"weather":{"value":wea, "color":get_random_color()},"temperature":{"value":temperature, "color":get_random_color()},"low":{"value":low, "color":get_random_color()},"high":{"value":high, "color":get_random_color()},"love_days":{"value":get_count(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},"words":{"value":get_words(), "color":get_random_color()}}
+wea, temperature, low, high, humidity, wind, airQuality, load = get_weather()
+data = {
+        "weather": {"value":wea, "color":get_random_color()},  # 天气
+        "temperature": {"value":temperature, "color":get_random_color()},  # 当前温度
+        "low":{"value":low, "color":get_random_color()},  # 最低气温
+        "high":{"value":high, "color":get_random_color()},  # 最高气温
+        "humidity": {"value": humidity, "color": get_random_color()},  # 空气湿度
+        "wind": {"value": wind, "color": get_random_color()},  # 风力
+        "airQuality": {"value": airQuality, "color": get_random_color()},  # 空气质量
+        "load": {"value": load, "color": get_random_color()},  # 所在地
+        "love_days":{"value":get_count(), "color":get_random_color()},  # 恋爱纪念日
+        "birthday_left":{"value":get_birthday(), "color":get_random_color()},  # 宝宝生日
+        "words":{"value":get_words(), "color":get_random_color()},  # 彩虹屁
+        "words_pyq": {"value": get_words_pyq(), "color": get_random_color()}  # 朋友圈文案
+}
 # res = wm.send_template(user_id, template_id, data)
-# print(res)
+res = wm.send_template(user_id_cjy, template_id_cjy, data)
+print(res)
 
 wm = WeChatMessage(client)
 wea, temperature, low, high, humidity, wind, airQuality, load = get_weather_cjy()
@@ -91,19 +105,16 @@ data = {
         "temperature": {"value":temperature, "color":get_random_color()},  # 当前温度
         "low":{"value":low, "color":get_random_color()},  # 最低气温
         "high":{"value":high, "color":get_random_color()},  # 最高气温
-
         "humidity": {"value": humidity, "color": get_random_color()},  # 空气湿度
         "wind": {"value": wind, "color": get_random_color()},  # 风力
         "airQuality": {"value": airQuality, "color": get_random_color()},  # 空气质量
         "load": {"value": load, "color": get_random_color()},  # 所在地
-
         "love_days":{"value":get_count(), "color":get_random_color()},  # 恋爱纪念日
         "birthday_left":{"value":get_birthday(), "color":get_random_color()},  # 宝宝生日
         "words":{"value":get_words(), "color":get_random_color()},  # 彩虹屁
-
         "words_pyq": {"value": get_words_pyq(), "color": get_random_color()}  # 朋友圈文案
 }
-res = wm.send_template(user_id_cjy, template_id_cjy, data)
+# res = wm.send_template(user_id_cjy, template_id_cjy, data)
 print(res)
 
 ###
