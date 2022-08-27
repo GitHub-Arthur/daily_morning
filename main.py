@@ -31,10 +31,10 @@ def get_weather():
          math.floor(weather['temp']), \
          math.floor(weather['low']),\
          math.floor(weather['high']),\
-         math.floor(weather['humidity']),\
-         math.floor(weather['wind']),\
-         math.floor(weather['airQuality']),\
-         math.floor(weather['city'])
+         weather['humidity'],\
+         weather['wind'],\
+         weather['airQuality'],\
+         weather['city']
 
 
 def get_weather_cjy():
@@ -45,10 +45,10 @@ def get_weather_cjy():
          math.floor(weather['temp']), \
          math.floor(weather['low']),\
          math.floor(weather['high']),\
-         math.floor(weather['humidity']),\
-         math.floor(weather['wind']),\
-         math.floor(weather['airQuality']),\
-         math.floor(weather['city'])
+         weather['humidity'],\
+         weather['wind'],\
+         weather['airQuality'],\
+         weather['city']
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
