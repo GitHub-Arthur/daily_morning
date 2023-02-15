@@ -24,31 +24,29 @@ user_id_cjy = os.environ["USER_ID_CJY"]
 
 
 def get_weather():
-  url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+  url = "https://devapi.qweather.com/v7/weather/3d?location=101210601&key=2698ab9d271f4ae8bd7e3899e8bb4902"
   res = requests.get(url).json()
-  weather = res['data']['list'][0]
-  return weather['weather'], \
-         math.floor(weather['temp']), \
-         math.floor(weather['low']),\
-         math.floor(weather['high']),\
-         weather['humidity'],\
-         weather['wind'],\
-         weather['airQuality'],\
-         weather['city']
+  weather = res['daily'][0]
+  tomorrow = res['daily'][1]
+  return weather['textDay'], \
+         math.floor(weather['tempMin']),\
+         math.floor(weather['tempMax']),\
+         weather['windDirDay'], \
+         weather['windScaleDay'], \
+         tomorrow['sunrise']
 
 
 def get_weather_cjy():
-  url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city_cjy
+  url = "https://devapi.qweather.com/v7/weather/3d?location=101210101&key=2698ab9d271f4ae8bd7e3899e8bb4902"
   res = requests.get(url).json()
-  weather = res['data']['list'][0]
-  return weather['weather'], \
-         math.floor(weather['temp']), \
-         math.floor(weather['low']),\
-         math.floor(weather['high']),\
-         weather['humidity'],\
-         weather['wind'],\
-         weather['airQuality'],\
-         weather['city']
+  weather = res['daily'][0]
+  tomorrow = res['daily'][1]
+  return weather['textDay'], \
+         math.floor(weather['tempMin']),\
+         math.floor(weather['tempMax']),\
+         weather['windDirDay'], \
+         weather['windScaleDay'], \
+         tomorrow['sunrise']
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -79,36 +77,31 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
-wea, temperature, low, high, humidity, wind, airQuality, load = get_weather()
+wea,  low, high, wind, windScale, sunrise = get_weather()
 data = {
         "weather": {"value":wea, "color":get_random_color()},  # 天气
-        "temperature": {"value":temperature, "color":get_random_color()},  # 当前温度
         "low":{"value":low, "color":get_random_color()},  # 最低气温
         "high":{"value":high, "color":get_random_color()},  # 最高气温
-        "humidity": {"value": humidity, "color": get_random_color()},  # 空气湿度
         "wind": {"value": wind, "color": get_random_color()},  # 风力
-        "airQuality": {"value": airQuality, "color": get_random_color()},  # 空气质量
-        "load": {"value": load, "color": get_random_color()},  # 所在地
+        "windScale": {"value": windScale, "color": get_random_color()},  # 风力等级
+        "sunrise": {"value": sunrise, "color": get_random_color()},  # 明日日出时间
         "love_days":{"value":get_count(), "color":get_random_color()},  # 恋爱纪念日
         "birthday_left":{"value":get_birthday(), "color":get_random_color()},  # 宝宝生日
         "words":{"value":get_words(), "color":get_random_color()},  # 彩虹屁
         "words_pyq": {"value": get_words_pyq(), "color": get_random_color()}  # 朋友圈文案
 }
-res = wm.send_template(user_id, template_id, data)
-# res = wm.send_template(user_id_cjy, template_id, data)
-print(res)
+# res = wm.send_template(user_id, template_id, data)
+# print(res)
 
 wm = WeChatMessage(client)
-wea, temperature, low, high, humidity, wind, airQuality, load = get_weather_cjy()
+wea,  low, high, wind, windScale, sunrise = get_weather_cjy()
 data = {
         "weather": {"value":wea, "color":get_random_color()},  # 天气
-        "temperature": {"value":temperature, "color":get_random_color()},  # 当前温度
         "low":{"value":low, "color":get_random_color()},  # 最低气温
         "high":{"value":high, "color":get_random_color()},  # 最高气温
-        "humidity": {"value": humidity, "color": get_random_color()},  # 空气湿度
         "wind": {"value": wind, "color": get_random_color()},  # 风力
-        "airQuality": {"value": airQuality, "color": get_random_color()},  # 空气质量
-        "load": {"value": load, "color": get_random_color()},  # 所在地
+        "windScale": {"value": windScale, "color": get_random_color()},  # 风力等级
+        "sunrise": {"value": sunrise, "color": get_random_color()},  # 明日日出时间
         "love_days":{"value":get_count(), "color":get_random_color()},  # 恋爱纪念日
         "birthday_left":{"value":get_birthday(), "color":get_random_color()},  # 宝宝生日
         "words":{"value":get_words(), "color":get_random_color()},  # 彩虹屁
