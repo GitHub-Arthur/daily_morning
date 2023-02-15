@@ -90,8 +90,8 @@ data = {
         "words":{"value":get_words(), "color":get_random_color()},  # 彩虹屁
         "words_pyq": {"value": get_words_pyq(), "color": get_random_color()}  # 朋友圈文案
 }
-# res = wm.send_template(user_id, template_id, data)
-# print(res)
+res = wm.send_template(user_id, template_id, data)
+print(res)
 
 wm = WeChatMessage(client)
 wea,  low, high, wind, windScale, sunrise = get_weather_cjy()
