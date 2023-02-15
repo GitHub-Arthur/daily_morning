@@ -29,8 +29,8 @@ def get_weather():
   weather = res['daily'][0]
   tomorrow = res['daily'][1]
   return weather['textDay'], \
-         math.floor(weather['tempMin']),\
-         math.floor(weather['tempMax']),\
+         weather['tempMin'],\
+         weather['tempMax'],\
          weather['windDirDay'], \
          weather['windScaleDay'], \
          tomorrow['sunrise']
@@ -42,8 +42,8 @@ def get_weather_cjy():
   weather = res['daily'][0]
   tomorrow = res['daily'][1]
   return weather['textDay'], \
-         math.floor(weather['tempMin']),\
-         math.floor(weather['tempMax']),\
+         weather['tempMin'],\
+         weather['tempMax'],\
          weather['windDirDay'], \
          weather['windScaleDay'], \
          tomorrow['sunrise']
