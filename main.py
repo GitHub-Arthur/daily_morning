@@ -24,7 +24,7 @@ user_id_cjy = os.environ["USER_ID_CJY"]
 
 
 def get_weather():
-  url = "https://devapi.qweather.com/v7/weather/3d?location=101210601&key=2698ab9d271f4ae8bd7e3899e8bb4902"
+  url = "https://devapi.qweather.com/v7/weather/3d?location=101210501&key=2698ab9d271f4ae8bd7e3899e8bb4902"
   res = requests.get(url).json()
   weather = res['daily'][0]
   tomorrow = res['daily'][1]
